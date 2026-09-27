@@ -1,0 +1,21 @@
+# PIN 0.3.0: newer (0.5.0) hard-binds rtlsdr_set_dithering, absent in Debian's
+# librtlsdr 2.0.2 -> import fails on Pi. 0.3.0 binds cleanly against the stock
+# (already V4-aware) lib; no rtl-sdr-blog fork compile needed.
+pyrtlsdr==0.3.0
+pyserial>=3.5
+numpy>=1.21.0
+# Preferred, not required: core.detector uses scipy.signal.welch when present
+# and an equivalent numpy Welch otherwise (see welch_psd). Keep it installed --
+# the scipy path is faster -- but the station stays fully functional without it,
+# which is what lets a remote station be fixed over the air. On Debian install
+# with: apt-get install -y python3-scipy (the wheel build on a Pi is very slow).
+scipy>=1.7.0
+requests>=2.25.0
+# Flask powers the local :8080 dashboard AND is pulled in by boot gain-
+# calibration; missing it silently fails calibration + leaves :8080 down.
+flask>=2.0.0
+flask-cors>=3.0.0
+h5py>=3.0.0
+matplotlib>=3.3.0
+pillow>=8.0.0
+psutil>=5.8.0

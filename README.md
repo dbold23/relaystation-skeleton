@@ -9,6 +9,16 @@ with a central server for the fleet.
 > docstrings and the outline below are enough to build your own station. You are welcome
 > to; please credit Daniel Sambold if you do.
 
+## Collaborate
+
+I am looking for collaborators. What needs work:
+
+- **Outdoor range walk.** The roughly 30 dB gain is on a synthetic-noise bench; it has not been turned into distance in the field yet.
+- **Real noise captures** from other sites, to test the self-calibrating gates against heavier-tailed noise.
+- **Field partners** running VHF tags who want an unattended receiver, and help with antennas and enclosures.
+
+Interested? [Open an issue](https://github.com/dbold23/relaystation-skeleton/issues/new) or message me on [LinkedIn](https://www.linkedin.com/in/daniel-sambold-620b37221).
+
 ![Detection chain](docs/detection-chain.svg)
 
 Radio tags on animals beep for about 19 ms every 1.7 s near 151 MHz. A station reads

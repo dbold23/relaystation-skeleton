@@ -83,3 +83,7 @@ station/
 central/
     server/
 ```
+
+## Cite
+
+If this helps your work, please credit Daniel Sambold. GitHub's "Cite this repository" button (from `CITATION.cff`) gives the citation in APA or BibTeX.

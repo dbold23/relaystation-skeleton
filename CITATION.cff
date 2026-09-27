@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If this project informs your work, please cite it using this metadata."
+title: "RelayStation: unattended VHF wildlife tag detection on a Raspberry Pi and a software-defined radio"
+type: software
+authors:
+  - family-names: Sambold
+    given-names: Daniel
+    affiliation: "California State University, Monterey Bay"
+    orcid: "https://orcid.org/0009-0003-7810-650X"
+keywords:
+  - "radio telemetry"
+  - "VHF"
+  - "software-defined radio"
+  - "Raspberry Pi"
+  - "wildlife tracking"
+repository-code: "https://github.com/dbold23/relaystation-skeleton"

@@ -3,11 +3,11 @@
 Unattended VHF wildlife tag detection on a Raspberry Pi and a software-defined radio,
 with a central server for the fleet.
 
-> **This is a skeleton.** It is the real module layout, class and function signatures and
-> docstrings of a private research codebase, with every function body replaced by `...`
-> and all data, weights, configuration and credentials left out. It shows how the system
-> is built; it does not run. The full code is private while the work is prepared for
-> publication. Copyright Daniel Sambold, all rights reserved.
+> **Skeleton of an ongoing project.** This is the real module layout, signatures and
+> docstrings of the station and its server, with every function body replaced by `...`
+> and all keys, station configs and field data left out. It does not run, but the
+> docstrings and the outline below are enough to build your own station. You are welcome
+> to; please credit Daniel Sambold if you do.
 
 ![Detection chain](docs/detection-chain.svg)
 
@@ -30,6 +30,23 @@ Every channel-frame lands in exactly one pipeline stage and the counts ride the
 heartbeat, so a station that is running but deaf shows up on the dashboard instead of
 looking healthy. The clock steps from the server when there is no NTP, the modem has a
 recovery ladder, and the watchdog keeps a persistent blackout clock.
+
+## Build your own
+
+1. **Hardware.** A Raspberry Pi, an RTL-SDR tuned near your tag band, an antenna,
+   and optionally an NB-IoT HAT for sites with no WiFi.
+2. **Survey.** Read short IQ blocks, take a spectrogram, slide a pulse-length mean
+   along time in every bin, and normalise each bin by its own learnt level so spurs
+   divide out (`station/core/survey_dsp.py`).
+3. **Gate from your own noise.** Fit the detection threshold from the station's pooled
+   noise maxima at a chosen false-alarm rate, not from a fixed dB number.
+4. **Matched filter and fold.** For each known tag, decimate around its carrier, run a
+   pulse-length matched filter, and fold the statistic at the beacon period to pull out
+   tags too weak for one pulse (`station/core/mf_frontend.py`).
+5. **Validate the train.** Accept a tag only after a run of pulses at the right interval
+   (`station/core/pattern_validator.py`).
+6. **Report so deafness shows.** Count every channel-frame into one pipeline stage and
+   send the counts with the heartbeat (`central/server/`).
 
 ## Layout
 
